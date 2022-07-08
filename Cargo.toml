@@ -4,6 +4,6 @@ members = [
   "hello",
   "manual-routing",
   "misc",
-  "pastebin",
+  "pb",
   "tk-protostreamer"
 ]
