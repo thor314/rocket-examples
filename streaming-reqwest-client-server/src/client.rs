@@ -1,13 +1,24 @@
 // use req
 
-use std::future;
+use std::{future, time::Duration};
 
 use futures::StreamExt;
-use tokio::{join, task::JoinHandle};
+use reqwest::Client;
+use tokio::time::sleep;
 
 use crate::message::Message;
 
 mod message;
+
+/// Method for the client to send a message to the server
+async fn send_message(client: &Client) -> anyhow::Result<()> {
+  client
+    .post("http://127.0.0.1:8000/message")
+    .form(&[("room", "23"), ("message", "Hi Bob"), ("username", "Al")])
+    .send()
+    .await?;
+  Ok(())
+}
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -16,6 +27,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     .bytes_stream()
     .map(|x| x.unwrap())
     .filter(|x| future::ready(&**x != b":\n" && &**x != b"\n"));
+
+  // spawn a task to send messages every 5 seconds
+  tokio::spawn(async move {
+    let client = Client::new();
+    loop {
+      send_message(&client).await.unwrap();
+      sleep(Duration::from_secs(5)).await;
+    }
+  });
 
   // let h1: JoinHandle<anyhow::Result<()>> = tokio::spawn(async move {
   tokio::spawn(async move {

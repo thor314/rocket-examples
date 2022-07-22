@@ -18,7 +18,7 @@ use validator::{Validate, ValidationError};
 mod message;
 mod utils;
 // mod client;
-#[macro_use]extern crate rocket;
+#[macro_use] extern crate rocket;
 
 use rocket::{
   form::Form,

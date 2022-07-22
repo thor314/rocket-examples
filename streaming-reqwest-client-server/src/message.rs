@@ -17,7 +17,7 @@ use rocket::{
     select,
     sync::broadcast::{channel, error::RecvError, Sender},
   },
-  Shutdown, State, FromForm,
+  FromForm, Shutdown, State,
 };
 use validator::{Validate, ValidationError};
 
