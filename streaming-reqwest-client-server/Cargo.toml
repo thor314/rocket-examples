@@ -17,7 +17,7 @@ validator = { version = "0.15", features = ["derive"] }
 # Common, but not used in this template. optional => won't be compiled unless used
 cfg-if = { version = "1.0.0", optional = true} # branching compilation logic
 serde = { version = "1", features = ["derive"], optional = true }
-serde_json = { version = "1.0", optional = true }
+serde_json = { version = "1.0" }
 rand = { version = "0.8" }
 cute =  { version ="0.3", optional = true } # python-like list comprehensions
 
@@ -48,7 +48,7 @@ path = "src/client.rs"
 
 
 [features]
-some_feature = ["dep:serde","dep:serde_json"] # use this to use optional dependencies
+# some_feature = ["dep:serde","dep:serde_json"] # use this to use optional dependencies
 
 [dev-dependencies]
 # Bench
