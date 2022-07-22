@@ -11,12 +11,14 @@ use futures::{
   executor::{self, ThreadPool},
   StreamExt,
 };
+use message::Message;
 use utils::MyError;
 use validator::{Validate, ValidationError};
 
+mod message;
 mod utils;
 // mod client;
-#[macro_use]extern crate rocket;
+#[macro_use] extern crate rocket;
 
 use rocket::{
   form::Form,
@@ -29,17 +31,6 @@ use rocket::{
   },
   Shutdown, State,
 };
-
-#[derive(Debug, Clone, FromForm, Serialize, Deserialize)]
-#[cfg_attr(test, derive(PartialEq, UriDisplayQuery))]
-#[serde(crate = "rocket::serde")]
-struct Message {
-  #[field(validate = len(..30))]
-  pub room:     String,
-  #[field(validate = len(..20))]
-  pub username: String,
-  pub message:  String,
-}
 
 /// Returns an infinite stream of server-sent events. Each event is a message
 /// pulled from a broadcast queue sent by the `post` handler.

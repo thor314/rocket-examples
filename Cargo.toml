@@ -1,6 +1,6 @@
 [workspace]
 members = [
-  "chat",
+  "streaming-reqwest-client-server",
   "hello",
   "manual-routing",
   "misc",
