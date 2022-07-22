@@ -21,10 +21,10 @@ cr --bin server
 curl http://127.0.0.1:8000/events
 # term3: post messages
 curl -d "room=23&username=Al&message=Hi Bob" http://127.0.0.1:8000/message
+```
 
 ## Important to filter the crap!
 Occasionally an empty message pipes from the stream. Filter messages like these:
-```
+
 Chunk: Ok(b"\n")
 Chunk: Ok(b":\n")
-```
