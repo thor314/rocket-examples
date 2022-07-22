@@ -34,6 +34,18 @@ tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
 
 # Your dependencies
 rocket = { version = "0.5.0-rc.2", features = ["json"] }
+reqwest = { version = "0.11.11", features = ["stream"] }
+
+[[bin]]
+name = "server"
+path = "src/main.rs"
+# required-features = ["default"]
+
+[[bin]]
+name = "client"
+path = "src/client.rs"
+# required-features = ["default"]
+
 
 [features]
 some_feature = ["dep:serde","dep:serde_json"] # use this to use optional dependencies

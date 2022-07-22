@@ -37,7 +37,7 @@ tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
 # rhai = { version = "1.8.0", features = [ "sync", "unchecked", "only_i32", "no_float", "no_module", "no_function" ] }
 
 # Your dependencies
-rocket = "0.5.0-rc.2"
+rocket = { version = "0.5.0-rc.2", features = ["json"] }
 
 [features]
 some_feature = ["dep:serde","dep:serde_json"] # use this to use optional dependencies
