@@ -5,5 +5,5 @@ members = [
   "manual-routing",
   "misc",
   "pastebin",
-  "tk-protostreamer"
+  "tk-protostreamer",
 ]
