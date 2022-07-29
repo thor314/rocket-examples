@@ -16,6 +16,7 @@ use utils::MyError;
 use validator::{Validate, ValidationError};
 
 mod message;
+mod temp;
 mod utils;
 // mod client;
 #[macro_use] extern crate rocket;

@@ -4,6 +4,7 @@ use std::{future, time::Duration};
 
 use futures::StreamExt;
 use reqwest::Client;
+use rocket::http::hyper::body::Bytes;
 use tokio::time::sleep;
 
 use crate::message::Message;
@@ -26,7 +27,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     .await?
     .bytes_stream()
     .map(|x| x.unwrap())
-    .filter(|x| future::ready(&**x != b":\n" && &**x != b"\n"));
+    .filter(|x:&Bytes| future::ready(&**x != b":\n" && &**x != b"\n"));
 
   // spawn a task to send messages every 5 seconds
   tokio::spawn(async move {
