@@ -47,7 +47,7 @@ some_feature = [
 
 [dev-dependencies]
 # Bench
-criterion = "0.4"
+criterion = "0.5"
 iai = "0.1"       # criterion alternative
 # Testing utils
 test-log = { version = "0.2", default-features = false, features = ["trace"] }
